@@ -24,8 +24,9 @@ export default function CheckinForm() {
         }),
       })
       if (res.ok) {
-        router.push('/dashboard')
-        alert(res)
+        setMessage('')
+        setStatus('Neutral')
+        alert('Check-in submitted successfully!')
       }
     } catch (err: any) {
       alert('Error submitting check-in: ' + err.message)
@@ -35,6 +36,7 @@ export default function CheckinForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-md bg-base-200 p-6 rounded-box shadow">
+    <h4 className="text-1 mb-6">Hi, <strong>{loginData.full_name}</strong>! Please create a check-in.</h4>
       <div className="mb-4">
             <label className="block mb-2 font-semibold">Mood</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

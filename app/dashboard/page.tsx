@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import RequireLogin from '../components/RequireLogin'
+import { useRouter } from 'next/navigation'
 
 const DashboardPage = () => {
   return (
