@@ -4,15 +4,25 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function RequireLogin({ children }: { children: React.ReactNode }) {
-  const { loginData } = useLogin()
+  const { loginData, setLoginData } = useLogin()
   const router = useRouter()
 
   useEffect(() => {
-    console.log('Checking login status:', loginData)
-    if (!loginData) {
-      router.replace('/login')
+    const loginDataFromStorage = localStorage.getItem('loginData')
+
+    if (loginDataFromStorage) {
+      try {
+        const parsedData = JSON.parse(loginDataFromStorage)
+        setLoginData(parsedData)
+        console.log('Parsed login data:', parsedData)
+      } catch (error) {
+        console.error('Error parsing login data:', error)
+      }
+      return
     }
-  }, [loginData])
+
+    router.replace('/login')
+  }, [])
 
   if (!loginData) {
     return null // Or a loading spinner

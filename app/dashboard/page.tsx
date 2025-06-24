@@ -22,7 +22,7 @@ const DashboardPage = () => {
                 href="/checkin/list"
                 className="text-blue-600 hover:underline hover:text-blue-800 transition-colors"
               >
-                Your check-ins
+                Check-ins
               </Link>
             </li>
           </ul>

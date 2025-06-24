@@ -16,7 +16,7 @@ export function useLogin() {
 }
 
 export function LoginProvider({ children }: { children: React.ReactNode }) {
-  const [loginData, setLoginData] = useState<LoginData | null>(null)
+  const [loginData, setLoginDataState] = useState<LoginData | null>(null)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -25,8 +25,8 @@ export function LoginProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  const setLoginDataState = (data: LoginData | null) => {
-    setLoginData(data)
+  const setLoginData = (data: LoginData | null) => {
+    setLoginDataState(data)
     if (typeof window !== 'undefined') {
       if (data) {
         localStorage.setItem('loginData', JSON.stringify(data))

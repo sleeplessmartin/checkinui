@@ -13,8 +13,8 @@ export default function LoginPage() {
 
   useEffect(() => {
     // Reset login data on component mount
-    console.log('Resetting login data')
-    setLoginData(null)
+    //console.log('Resetting login data')
+    //setLoginData(null)
   }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
