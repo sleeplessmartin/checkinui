@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 type Checkin = {
   id: string
@@ -73,7 +74,14 @@ export default function CheckinList() {
           <tbody>
             {checkins.map((checkin) => (
               <tr key={checkin.checkin_id} className="hover:bg-base-100 transition-colors">
-                <td className="px-6 py-2 font-mono text-xs text-gray-500 text-center">{checkin.checkin_id}</td>
+                <td className="px-6 py-2 font-mono text-xs text-gray-500 text-center">
+                    <Link
+                        href={`/checkin/${checkin.checkin_id}`}
+                        className="link link-primary"
+                        >
+                        {checkin.checkin_id}
+                    </Link>
+                </td>
                 <td className="px-6 py-2">{checkin.user_id}</td>
                 <td className="px-6 py-2">
                   <span className="badge badge-outline capitalize">{checkin.status}</span>
