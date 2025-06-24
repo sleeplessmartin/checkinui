@@ -97,7 +97,7 @@ export default function CheckinForm() {
             className="btn btn-primary w-full"
             >
             Submit Check-in 
-            </button>
+            </button>   
     </form>
   )
 }
