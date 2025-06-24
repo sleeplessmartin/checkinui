@@ -15,7 +15,7 @@ export default function LoginPage() {
     // Reset login data on component mount
     console.log('Resetting login data')
     setLoginData(null)
-  }, [setLoginData])
+  }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()

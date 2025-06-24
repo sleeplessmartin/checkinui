@@ -18,6 +18,24 @@ export function useLogin() {
 export function LoginProvider({ children }: { children: React.ReactNode }) {
   const [loginData, setLoginData] = useState<LoginData | null>(null)
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('loginData')
+      if (stored) setLoginDataState(JSON.parse(stored))
+    }
+  }, [])
+
+  const setLoginDataState = (data: LoginData | null) => {
+    setLoginData(data)
+    if (typeof window !== 'undefined') {
+      if (data) {
+        localStorage.setItem('loginData', JSON.stringify(data))
+      } else {
+        localStorage.removeItem('loginData')
+      }
+    }
+  }
+
   return (
     <LoginContext.Provider value={{ loginData, setLoginData }}>
       {children}

@@ -8,10 +8,11 @@ export default function RequireLogin({ children }: { children: React.ReactNode }
   const router = useRouter()
 
   useEffect(() => {
+    console.log('Checking login status:', loginData)
     if (!loginData) {
       router.replace('/login')
     }
-  }, [loginData, router])
+  }, [loginData])
 
   if (!loginData) {
     return null // Or a loading spinner
