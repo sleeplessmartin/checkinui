@@ -13,7 +13,7 @@ export default function CheckinForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const res = await fetch('/api/checkin', {
+      const res = await fetch('http://localhost:5210/api/checkin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -25,9 +25,10 @@ export default function CheckinForm() {
       })
       if (res.ok) {
         router.push('/dashboard')
+        alert(res)
       }
     } catch (err: any) {
-      alert('Error submitting check-in')
+      alert('Error submitting check-in: ' + err.message)
     }
     setMessage('')
   }
